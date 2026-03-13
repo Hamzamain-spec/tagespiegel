@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TageSpiegel — Dein deutsches Blog</title>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#F6F4EF;--white:#FFFFFF;--card:#FFFFFF;
+  --ink:#1A1C0E;--mid:#2A2E10;
+  --border:#DDD9CC;--border2:#C0BB9E;
+  --olive:#4A5420;--olive2:#3A4218;
+  --forest:#2D5016;--sage:#6B8C3A;
+  --gold:#B8A020;--amber:#D4820A;
+  --muted:#6A6A4A;--light:#A8A880;
+  --warm:#EEE9DC;--warm2:#E4DEC8;
+  --cream:#F9F7F2;
+}
+body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--ink);-webkit-font-smoothing:antialiased}
+.topbar{background:var(--olive);padding:8px 0}
+.tb-inner{max-width:1300px;margin:0 auto;padding:0 44px;display:flex;justify-content:space-between;align-items:center}
+.tb-l{font-size:11px;color:rgba(255,255,255,0.5);letter-spacing:1px;display:flex;align-items:center;gap:10px}
+.tb-leaf{font-size:13px}
+.tb-r{display:flex;gap:20px}
+.tb-r a{font-size:10px;color:rgba(255,255,255,0.4);text-decoration:none;letter-spacing:2px;text-transform:uppercase;font-weight:600;transition:color 0.2s}
+.tb-r a:hover{color:rgba(255,255,255,0.9)}
+/* HEADER */
+header{background:var(--cream);border-bottom:3px solid var(--olive)}
+.hdr{max-width:1300px;margin:0 auto;padding:0 44px}
+.hdr-top{padding:26px 0 20px;display:flex;align-items:flex-end;justify-content:space-between;border-bottom:1px solid var(--border)}
+.logo{text-decoration:none}
+.logo-name{font-family:'Libre Baskerville',serif;font-size:54px;font-weight:700;color:var(--ink);letter-spacing:-2px;line-height:0.9}
+.logo-name .spiegel{color:var(--olive)}
+.logo-sub{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--muted);margin-top:7px;font-weight:600}
+.hdr-right{text-align:right;padding-bottom:4px}
+.hdr-date{font-size:12px;color:var(--muted);font-weight:600;margin-bottom:5px}
+.hdr-motd{font-family:'Libre Baskerville',serif;font-size:12px;color:var(--light);font-style:italic}
+.hdr-nav{display:flex;align-items:center;gap:0;padding:10px 0;flex-wrap:wrap}
+.hdr-nav a{padding:8px 16px;color:var(--muted);text-decoration:none;font-size:12px;font-weight:600;letter-spacing:0.5px;transition:all 0.2s;border-right:1px solid var(--border)}
+.hdr-nav a:first-child{padding-left:0}
+.hdr-nav a:last-child{border-right:none;margin-left:auto;background:var(--olive);color:#fff;padding:8px 18px}
+.hdr-nav a:hover{color:var(--olive)}
+.hdr-nav a:last-child:hover{background:var(--olive2)}
+
+/* HERO — Full editorial strip */
+.hero{background:var(--olive);border-bottom:2px solid var(--ink)}
+.hero-inner{max-width:1300px;margin:0 auto;display:grid;grid-template-columns:52% 48%}
+.hero-main{padding:52px 48px 52px 44px;border-right:1px solid rgba(255,255,255,0.1);cursor:pointer;position:relative}
+.hero-main::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:linear-gradient(135deg,rgba(0,0,0,0.1),transparent);pointer-events:none}
+.hm-kicker{display:flex;align-items:center;gap:8px;margin-bottom:18px}
+.hm-kicker-tag{background:var(--gold);color:var(--ink);font-size:9px;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;padding:4px 12px}
+.hm-kicker-label{font-size:10px;color:rgba(255,255,255,0.4);letter-spacing:2px;text-transform:uppercase;font-weight:700}
+.hm-title{font-family:'Libre Baskerville',serif;font-size:48px;font-weight:700;color:#fff;line-height:1.05;margin-bottom:14px;letter-spacing:-0.5px;transition:color 0.2s}
+.hero-main:hover .hm-title{color:var(--gold)}
+.hm-excerpt{font-size:15px;line-height:1.75;color:rgba(255,255,255,0.55);font-weight:300;margin-bottom:22px;max-width:500px}
+.hm-meta{display:flex;align-items:center;justify-content:space-between;padding-top:18px;border-top:1px solid rgba(255,255,255,0.1);flex-wrap:wrap;gap:10px}
+.hm-meta-left{display:flex;align-items:center;gap:10px;font-size:12px;color:rgba(255,255,255,0.4)}
+.hm-meta-left strong{color:rgba(255,255,255,0.8);font-weight:600}
+.hm-btn{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.2);color:#fff;padding:9px 18px;text-decoration:none;font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;transition:all 0.2s;backdrop-filter:blur(8px)}
+.hm-btn:hover{background:var(--gold);border-color:var(--gold);color:var(--ink)}
+/* Right column stack */
+.hero-right{display:flex;flex-direction:column}
+.hr-header{padding:14px 28px;border-bottom:1px solid rgba(255,255,255,0.1);background:rgba(0,0,0,0.15)}
+.hr-header-t{font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.3)}
+.hr-item{padding:18px 28px;border-bottom:1px solid rgba(255,255,255,0.07);flex:1;cursor:pointer;transition:background 0.2s;position:relative;display:flex;flex-direction:column;justify-content:center}
+.hr-item:last-child{border-bottom:none}
+.hr-item:hover{background:rgba(0,0,0,0.1)}
+.hr-item::before{content:'';position:absolute;left:0;top:10%;bottom:10%;width:3px;background:var(--gold);transform:scaleY(0);transition:transform 0.2s;transform-origin:center}
+.hr-item:hover::before{transform:scaleY(1)}
+.hri-num{font-size:11px;font-weight:700;color:rgba(255,255,255,0.1);letter-spacing:1px;margin-bottom:4px}
+.hri-cat{font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--sage);margin-bottom:5px}
+.hri-title{font-family:'Libre Baskerville',serif;font-size:19px;font-weight:700;color:rgba(255,255,255,0.8);line-height:1.2;margin-bottom:4px}
+.hr-item:hover .hri-title{color:#fff}
+.hri-meta{font-size:11px;color:rgba(255,255,255,0.2);font-weight:500}
+
+/* DIVIDER */
+.divider{background:var(--warm);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:12px 0}
+.div-inner{max-width:1300px;margin:0 auto;padding:0 44px;display:flex;align-items:center;gap:16px;overflow-x:auto}
+.div-tag{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;color:var(--muted);padding:5px 14px;border:1px solid var(--border);white-space:nowrap;transition:all 0.2s;cursor:pointer}
+.div-tag:hover{background:var(--olive);color:#fff;border-color:var(--olive)}
+.div-sep{color:var(--light);font-size:14px;flex-shrink:0}
+
+/* CONTENT */
+.content{max-width:1300px;margin:44px auto;padding:0 44px;display:grid;grid-template-columns:1fr 292px;gap:40px}
+.sec-head{display:flex;align-items:center;gap:12px;margin-bottom:22px}
+.sec-leaf{font-size:16px}
+.sec-title{font-family:'Libre Baskerville',serif;font-size:18px;font-weight:700;color:var(--ink);letter-spacing:-0.3px}
+.sec-line{flex:1;height:1px;background:var(--border)}
+.sec-count{font-size:11px;color:var(--muted);font-weight:600}
+
+/* POST CARD */
+.post-card{display:grid;grid-template-columns:210px 1fr;background:var(--card);border:1px solid var(--border);margin-bottom:3px;cursor:pointer;overflow:hidden;transition:all 0.3s;position:relative}
+.post-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--olive);transform:scaleY(0);transition:transform 0.25s;transform-origin:bottom}
+.post-card:hover::before{transform:scaleY(1)}
+.post-card:hover{box-shadow:0 12px 36px rgba(74,84,32,0.1);border-color:var(--sage)}
+.post-card:hover .pc-bg{transform:scale(1.06)}
+.pc-img{position:relative;overflow:hidden;min-height:148px}
+.pc-bg{width:100%;height:100%;position:absolute;inset:0;transition:transform 0.5s}
+.pc-tag{position:absolute;bottom:10px;left:10px;font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;background:var(--olive);color:#fff;padding:4px 10px}
+.pc-body{padding:20px 24px;display:flex;flex-direction:column;justify-content:space-between;border-left:1px solid var(--border)}
+.pc-meta{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+.pc-cat{font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--olive)}
+.pc-sep{width:3px;height:3px;border-radius:50%;background:var(--light)}
+.pc-date{font-size:11px;color:var(--muted)}
+.pc-title{font-family:'Libre Baskerville',serif;font-size:20px;font-weight:700;color:var(--ink);line-height:1.2;margin-bottom:8px;transition:color 0.2s}
+.post-card:hover .pc-title{color:var(--olive)}
+.pc-excerpt{font-size:13px;line-height:1.65;color:var(--muted);font-weight:300;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;margin-bottom:12px}
+.pc-footer{display:flex;align-items:center;justify-content:space-between;padding-top:10px;border-top:1px solid var(--border)}
+.pc-author{font-size:12px;font-weight:600;color:var(--mid)}
+.pc-read{font-size:11px;font-weight:700;color:var(--olive);text-decoration:none;letter-spacing:1px;transition:color 0.2s}
+.post-card:hover .pc-read{color:var(--sage)}
+.empty-state{text-align:center;padding:80px;background:var(--card);border:1px solid var(--border)}
+.empty-state h3{font-family:'Libre Baskerville',serif;font-size:32px;color:var(--ink);margin-bottom:8px}
+.empty-state p{color:var(--muted);font-size:14px}
+.bg1{background:linear-gradient(135deg,#1A1C0E,#2A2E10)}.bg2{background:linear-gradient(135deg,#4A5420,#2A3010)}.bg3{background:linear-gradient(135deg,#2D5016,#1A3008)}.bg4{background:linear-gradient(135deg,#1A3040,#0A1828)}.bg5{background:linear-gradient(135deg,#3A2000,#201000)}.bg6{background:linear-gradient(135deg,#2A0030,#160018)}.bg7{background:linear-gradient(135deg,#001A30,#000A18)}.bg8{background:linear-gradient(135deg,#3A1A00,#201000)}
+
+/* SIDEBAR */
+.sidebar{display:flex;flex-direction:column;gap:16px}
+.widget{background:var(--card);border:1px solid var(--border);overflow:hidden}
+.w-head{padding:12px 18px;border-bottom:1px solid var(--border);background:var(--warm);display:flex;align-items:center;gap:8px}
+.w-leaf{font-size:14px}
+.w-title{font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--ink)}
+.w-body{padding:14px 18px}
+.wi{padding:11px 0;border-bottom:1px solid var(--border);cursor:pointer;transition:padding 0.15s}
+.wi:last-child{border-bottom:none;padding-bottom:0}.wi:first-child{padding-top:0}
+.wi:hover{padding-left:5px}
+.wi-cat{font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--olive);margin-bottom:3px}
+.wi-title{font-family:'Libre Baskerville',serif;font-size:16px;color:var(--ink);line-height:1.25;text-decoration:none;display:block;font-weight:400}
+.wi-title:hover{color:var(--olive)}
+.wi-meta{font-size:11px;color:var(--light);margin-top:2px}
+.about-box{background:var(--olive);padding:24px}
+.ab-name{font-family:'Libre Baskerville',serif;font-size:24px;font-weight:700;color:#fff;margin-bottom:6px;letter-spacing:-0.5px;line-height:1}
+.ab-name .s{color:var(--gold)}
+.ab-text{font-size:13px;line-height:1.7;color:rgba(255,255,255,0.45);font-weight:300}
+.cat-grid{display:grid;grid-template-columns:1fr 1fr;gap:5px}
+.cat-btn{background:var(--warm);border:1px solid var(--border);color:var(--muted);font-size:11px;font-weight:600;padding:8px 10px;text-decoration:none;text-align:center;transition:all 0.2s;display:block}
+.cat-btn:hover{background:var(--olive);color:#fff;border-color:var(--olive)}
+
+/* FOOTER */
+footer{background:var(--olive);margin-top:52px}
+.footer-inner{max-width:1300px;margin:0 auto;padding:48px 44px;display:grid;grid-template-columns:1.8fr 1fr 1fr 1fr;gap:48px}
+.footer-logo-name{font-family:'Libre Baskerville',serif;font-size:30px;font-weight:700;color:#fff;letter-spacing:-1px;margin-bottom:12px;line-height:1}
+.footer-logo-name .s{color:var(--gold)}
+.footer-brand p{font-size:13px;line-height:1.8;color:rgba(255,255,255,0.4);font-weight:300}
+.footer-col h4{font-size:9px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:14px}
+.footer-col a{display:block;color:rgba(255,255,255,0.4);text-decoration:none;font-size:13px;margin-bottom:8px;font-weight:300;transition:color 0.2s}
+.footer-col a:hover{color:#fff}
+.footer-bottom{border-top:1px solid rgba(255,255,255,0.1);max-width:1300px;margin:0 auto;padding:16px 44px;display:flex;justify-content:space-between;font-size:11px;color:rgba(255,255,255,0.3)}
+.footer-bottom a{color:rgba(255,255,255,0.3);text-decoration:none;margin-left:14px;transition:color 0.2s}
+.footer-bottom a:hover{color:#fff}
+.admin-link{position:fixed;bottom:22px;right:22px;background:var(--olive);color:#fff;padding:10px 20px;font-size:10px;text-decoration:none;opacity:0;transition:opacity 0.3s;font-weight:700;letter-spacing:2px;text-transform:uppercase;border:1px solid rgba(255,255,255,0.15)}
+body:hover .admin-link{opacity:0.45}
+.admin-link:hover{opacity:1!important;background:var(--olive2)}
+</style>
+</head>
+<body>
+<div class="topbar"><div class="tb-inner">
+  <div class="tb-l"><span class="tb-leaf">🌿</span>TageSpiegel — Das deutsche Blog für alle Themen</div>
+  <div class="tb-r"><a href="#">Newsletter</a><a href="#">Archiv</a><a href="#">Impressum</a></div>
+</div></div>
+
+<header><div class="hdr">
+  <div class="hdr-top">
+    <a href="index.html" class="logo">
+      <div class="logo-name">Tage<span class="spiegel">Spiegel</span></div>
+      <div class="logo-sub">Politik · Wirtschaft · Gesellschaft · Kultur · Wissen · Leben</div>
+    </a>
+    <div class="hdr-right">
+      <div class="hdr-date" id="hdr-date"></div>
+      <div class="hdr-motd">„Das Leben ist des Lebens Werkzeug."</div>
+    </div>
+  </div>
+  <div class="hdr-nav">
+    <a href="index.html">Alle</a><a href="index.html">Politik</a><a href="index.html">Wirtschaft</a>
+    <a href="index.html">Gesellschaft</a><a href="index.html">Kultur</a><a href="index.html">Technik</a>
+    <a href="index.html">Wissen</a><a href="index.html">Sport</a><a href="index.html">Lifestyle</a>
+    <a href="index.html">Newsletter →</a>
+  </div>
+</div></header>
+
+<div id="hero-section" class="hero" style="display:none">
+  <div class="hero-inner">
+    <div class="hero-main" id="hero-main"></div>
+    <div class="hero-right">
+      <div class="hr-header"><div class="hr-header-t">Weitere Beiträge</div></div>
+      <div id="hr-items"></div>
+    </div>
+  </div>
+</div>
+<div id="hero-empty" style="display:none;background:var(--olive);padding:64px 44px;text-align:center">
+  <div style="font-family:'Libre Baskerville',serif;font-size:52px;font-weight:700;color:rgba(255,255,255,0.06)">TageSpiegel</div>
+  <p style="color:rgba(255,255,255,0.25);font-size:14px;margin-top:8px">Noch keine Artikel — erstelle deinen ersten im Admin-Bereich.</p>
+</div>
+
+<div class="divider"><div class="div-inner">
+  <div class="div-tag">🌿 Politik</div><div class="div-sep">·</div>
+  <div class="div-tag">📈 Wirtschaft</div><div class="div-sep">·</div>
+  <div class="div-tag">👥 Gesellschaft</div><div class="div-sep">·</div>
+  <div class="div-tag">🎭 Kultur</div><div class="div-sep">·</div>
+  <div class="div-tag">💻 Technik</div><div class="div-sep">·</div>
+  <div class="div-tag">🔬 Wissen</div><div class="div-sep">·</div>
+  <div class="div-tag">⚽ Sport</div><div class="div-sep">·</div>
+  <div class="div-tag">✈ Reise</div><div class="div-sep">·</div>
+  <div class="div-tag">🍃 Lifestyle</div>
+</div></div>
+
+<div class="content">
+  <div>
+    <div class="sec-head"><span class="sec-leaf">🌿</span><div class="sec-title">Aktuelle Beiträge</div><div class="sec-line"></div><div class="sec-count" id="sec-count">0 Beiträge</div></div>
+    <div id="posts-list"><div class="empty-state"><h3>Noch keine Artikel</h3><p>Erstelle deinen ersten Beitrag im Admin-Bereich.</p></div></div>
+  </div>
+  <aside class="sidebar">
+    <div class="about-box"><div class="ab-name">Tage<span class="s">Spiegel</span></div><div class="ab-text">Das deutsche Blog für alle Themen — täglich neue Beiträge zu Politik, Wirtschaft, Gesellschaft, Kultur, Technik und Leben.</div></div>
+    <div class="widget"><div class="w-head"><span class="w-leaf">🌿</span><div class="w-title">Neueste Beiträge</div></div><div class="w-body"><div id="sidebar-recent"></div></div></div>
+    <div class="widget"><div class="w-head"><span class="w-leaf">🗂</span><div class="w-title">Kategorien</div></div><div class="w-body"><div class="cat-grid">
+      <a href="index.html" class="cat-btn">Politik</a><a href="index.html" class="cat-btn">Wirtschaft</a>
+      <a href="index.html" class="cat-btn">Gesellschaft</a><a href="index.html" class="cat-btn">Kultur</a>
+      <a href="index.html" class="cat-btn">Technik</a><a href="index.html" class="cat-btn">Wissen</a>
+      <a href="index.html" class="cat-btn">Lifestyle</a><a href="index.html" class="cat-btn">Sport</a>
+    </div></div></div>
+  </aside>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand"><div class="footer-logo-name">Tage<span class="s">Spiegel</span></div><p>TageSpiegel — Das deutschsprachige Online-Blog für alle Themen. Täglich neue Beiträge zu Politik, Wirtschaft, Gesellschaft, Kultur, Technik, Wissen und Leben.</p></div>
+    <div class="footer-col"><h4>Themen</h4><a href="#">Politik</a><a href="#">Wirtschaft</a><a href="#">Gesellschaft</a><a href="#">Kultur</a><a href="#">Technik</a></div>
+    <div class="footer-col"><h4>Service</h4><a href="#">Newsletter</a><a href="#">Archiv</a><a href="#">RSS Feed</a></div>
+    <div class="footer-col"><h4>Info</h4><a href="#">Über uns</a><a href="#">Impressum</a><a href="#">Datenschutz</a><a href="#">Kontakt</a></div>
+  </div>
+  <div class="footer-bottom"><span>&copy; 2026 TageSpiegel — Alle Rechte vorbehalten</span><div><a href="#">Impressum</a><a href="#">Datenschutz</a></div></div>
+</footer>
+<a href="admin.html" class="admin-link">⚙ Admin</a>
+
+<script>
+// Constants
+const GIST_ID = '42ea11087f40fdba423f8eb0f575ac96';
+const SITE_NAME = 'tagespiegel';
+const RAW_URL = `https://gist.githubusercontent.com/Hamzamain-spec/${GIST_ID}/raw/posts.json`;
+
+// Date formatting
+const d = new Date();
+const days = ['Sonntag','Montag','Dienstag','Mittwoch','Donnerstag','Freitag','Samstag'];
+const months = ['Januar','Februar','März','April','Mai','Juni','Juli','August','September','Oktober','November','Dezember'];
+document.getElementById('hdr-date').textContent = days[d.getDay()] + ', ' + d.getDate() + '. ' + months[d.getMonth()] + ' ' + d.getFullYear();
+
+const bgs = ['bg1','bg2','bg3','bg4','bg5','bg6','bg7','bg8'];
+
+async function loadPosts() {
+  try {
+    const response = await fetch(RAW_URL);
+    const allPosts = await response.json();
+    
+    // Filter posts by site name
+    const posts = Array.isArray(allPosts) 
+      ? allPosts.filter(p => p.site === SITE_NAME).reverse()
+      : [];
+    
+    document.getElementById('sec-count').textContent = posts.length + ' Beiträge';
+    
+    if (!posts.length) {
+      document.getElementById('hero-empty').style.display = 'block';
+      document.getElementById('hero-section').style.display = 'none';
+      document.getElementById('posts-list').innerHTML = '<div class="empty-state"><h3>Noch keine Artikel</h3><p>Erstelle deinen ersten Beitrag im Admin-Bereich.</p></div>';
+      return;
+    }
+    
+    document.getElementById('hero-section').style.display = 'block';
+    document.getElementById('hero-empty').style.display = 'none';
+    
+    // Hero section (latest post)
+    const p = posts[0];
+    const fd = new Date(p.date).toLocaleDateString('de-DE', {day:'numeric', month:'long', year:'numeric'});
+    const exc = p.content.replace(/<[^>]+>/g, '').substring(0, 155) + '...';
+    
+    const hm = document.getElementById('hero-main');
+    hm.onclick = () => location.href = 'post.html?id=' + p.id;
+    hm.innerHTML = `
+      <div class="hm-kicker">
+        <span class="hm-kicker-tag">${p.category || 'Allgemein'}</span>
+        <span class="hm-kicker-label">Hauptartikel</span>
+      </div>
+      <div class="hm-title">${p.title}</div>
+      <div class="hm-excerpt">${exc}</div>
+      <div class="hm-meta">
+        <div class="hm-meta-left">
+          <strong>${p.author || 'Redaktion'}</strong>
+          <span>·</span>
+          <span>${fd}</span>
+        </div>
+        <a class="hm-btn" href="post.html?id=${p.id}">Weiterlesen →</a>
+      </div>`;
+    
+    // Hero right items (next 3 posts)
+    const hri = document.getElementById('hr-items');
+    hri.innerHTML = '';
+    posts.slice(1, 4).forEach((p, i) => {
+      hri.innerHTML += `<div class="hr-item" onclick="location.href='post.html?id=${p.id}'">
+        <div class="hri-num">0${i+2}</div>
+        <div class="hri-cat">${p.category || 'Allgemein'}</div>
+        <div class="hri-title">${p.title}</div>
+        <div class="hri-meta">${p.author || 'Redaktion'} · ${new Date(p.date).toLocaleDateString('de-DE')}</div>
+      </div>`;
+    });
+    
+    // Main posts list
+    const pl = document.getElementById('posts-list');
+    pl.innerHTML = '';
+    posts.forEach((p, i) => {
+      const date = new Date(p.date).toLocaleDateString('de-DE', {day:'numeric', month:'long', year:'numeric'});
+      const exc = p.content.replace(/<[^>]+>/g, '').substring(0, 105) + '...';
+      pl.innerHTML += `<div class="post-card" onclick="location.href='post.html?id=${p.id}'">
+        <div class="pc-img">
+          <div class="pc-bg ${bgs[i % bgs.length]}"></div>
+          <div class="pc-tag">${p.category || 'Allgemein'}</div>
+        </div>
+        <div class="pc-body">
+          <div>
+            <div class="pc-meta">
+              <span class="pc-cat">${p.category || 'Allgemein'}</span>
+              <div class="pc-sep"></div>
+              <span class="pc-date">${date}</span>
+            </div>
+            <div class="pc-title">${p.title}</div>
+            <div class="pc-excerpt">${exc}</div>
+          </div>
+          <div class="pc-footer">
+            <span class="pc-author">${p.author || 'Redaktion'}</span>
+            <a class="pc-read" href="post.html?id=${p.id}">Lesen →</a>
+          </div>
+        </div>
+      </div>`;
+    });
+    
+    // Sidebar recent posts
+    const sr = document.getElementById('sidebar-recent');
+    sr.innerHTML = '';
+    posts.slice(0, 5).forEach(p => {
+      sr.innerHTML += `<div class="wi" onclick="location.href='post.html?id=${p.id}'">
+        <div class="wi-cat">${p.category || 'Allgemein'}</div>
+        <a class="wi-title" href="post.html?id=${p.id}">${p.title}</a>
+        <div class="wi-meta">${p.author || 'Redaktion'} · ${new Date(p.date).toLocaleDateString('de-DE')}</div>
+      </div>`;
+    });
+    
+  } catch (e) {
+    console.error('Error loading posts:', e);
+    document.getElementById('hero-empty').style.display = 'block';
+  }
+}
+
+// Load posts on page load
+loadPosts();
+
+// Auto-refresh every 30 seconds
+setInterval(loadPosts, 30000);
+</script>
+</body>
+</html>
