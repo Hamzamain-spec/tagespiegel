@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Artikel — TageSpiegel</title>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#F6F4EF;--white:#FFFFFF;--card:#FFFFFF;--ink:#1A1C0E;--mid:#2A2E10;--border:#DDD9CC;--olive:#4A5420;--olive2:#3A4218;--sage:#6B8C3A;--gold:#B8A020;--muted:#6A6A4A;--light:#A8A880;--warm:#EEE9DC;--cream:#F9F7F2}
+body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--ink);-webkit-font-smoothing:antialiased}
+header{background:var(--olive);border-bottom:2px solid var(--olive2)}
+.hdr-inner{max-width:1300px;margin:0 auto;padding:16px 44px;display:flex;align-items:center;justify-content:space-between}
+.logo{text-decoration:none}
+.logo-name{font-family:'Libre Baskerville',serif;font-size:28px;font-weight:700;color:#fff;letter-spacing:-0.5px}
+.logo-name .s{color:var(--gold)}
+nav{background:var(--ink)}
+.nav-inner{max-width:1300px;margin:0 auto;padding:0 44px;display:flex}
+nav a{display:block;padding:11px 16px;color:rgba(255,255,255,0.4);text-decoration:none;font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;transition:color 0.2s}
+nav a:hover{color:#fff}
+.post-hero{background:var(--olive);border-bottom:2px solid var(--ink)}
+.ph-inner{max-width:1300px;margin:0 auto;padding:60px 44px;display:grid;grid-template-columns:1fr 360px;gap:60px}
+.ph-breadcrumb{font-size:11px;color:rgba(255,255,255,0.25);margin-bottom:16px;display:flex;gap:6px}
+.ph-breadcrumb a{color:rgba(255,255,255,0.25);text-decoration:none;transition:color 0.2s}
+.ph-breadcrumb a:hover{color:var(--gold)}
+.ph-tag{display:inline-block;background:var(--gold);color:var(--ink);font-size:9px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;padding:4px 12px;margin-bottom:16px}
+.ph-title{font-family:'Libre Baskerville',serif;font-size:52px;font-weight:700;color:#fff;line-height:1.02;margin-bottom:20px;letter-spacing:-1px}
+.ph-meta{display:flex;align-items:center;gap:14px;font-size:12px;color:rgba(255,255,255,0.35);padding-top:18px;border-top:1px solid rgba(255,255,255,0.1);flex-wrap:wrap}
+.ph-meta strong{color:rgba(255,255,255,0.8);font-weight:600}
+.ph-av{width:34px;height:34px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;font-family:'Libre Baskerville',serif;font-size:14px;font-weight:700;color:var(--ink);flex-shrink:0}
+.ph-visual{background:rgba(0,0,0,0.15);border:1px solid rgba(255,255,255,0.08);min-height:280px;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.ph-vis-letter{font-family:'Libre Baskerville',serif;font-size:160px;font-weight:700;color:rgba(255,255,255,0.06);line-height:1;font-style:italic}
+.layout{max-width:1200px;margin:48px auto;padding:0 44px;display:grid;grid-template-columns:1fr 270px;gap:36px}
+.main-col{background:var(--card);padding:52px 56px;border:1px solid var(--border);border-top:3px solid var(--olive)}
+.back-btn{display:inline-flex;align-items:center;gap:7px;border:1.5px solid var(--border);color:var(--muted);text-decoration:none;font-size:10px;font-weight:600;padding:8px 16px;margin-bottom:36px;letter-spacing:2px;text-transform:uppercase;transition:all 0.2s}
+.back-btn:hover{border-color:var(--olive);color:var(--olive)}
+.article-body{font-size:18px;line-height:1.9;color:#2A2E10;font-weight:300}
+.article-body p{margin-bottom:26px}
+.article-body h2{font-family:'Libre Baskerville',serif;font-size:32px;font-weight:700;color:var(--ink);margin:50px 0 14px;letter-spacing:-0.3px;position:relative;padding-bottom:12px}
+.article-body h2::after{content:'';position:absolute;bottom:0;left:0;width:28px;height:2px;background:var(--olive)}
+.article-body h3{font-family:'Libre Baskerville',serif;font-size:22px;font-weight:700;color:var(--ink);margin:26px 0 10px}
+.article-body a{color:var(--olive);font-weight:500;text-decoration:none;border-bottom:1px solid rgba(74,84,32,0.3);transition:all 0.2s}
+.article-body a:hover{color:var(--ink);border-color:var(--ink)}
+.article-body ul,.article-body ol{padding-left:26px;margin-bottom:22px}
+.article-body li{margin-bottom:8px;line-height:1.8}
+.article-body strong{font-weight:700;color:var(--ink)}
+blockquote{border-left:3px solid var(--olive);padding:0 0 0 24px;margin:32px 0;font-family:'Libre Baskerville',serif;font-size:22px;font-style:italic;color:var(--ink);line-height:1.55}
+.sidebar{display:flex;flex-direction:column;gap:14px}
+.widget{background:var(--card);border:1px solid var(--border);overflow:hidden}
+.wh{padding:12px 18px;border-bottom:1px solid var(--border);background:var(--warm);display:flex;align-items:center;gap:8px}
+.wh-leaf{font-size:14px}
+.wh-title{font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--ink)}
+.wb{padding:14px 18px}
+.ri{padding:11px 0;border-bottom:1px solid var(--border);cursor:pointer;transition:padding 0.15s}
+.ri:last-child{border-bottom:none;padding-bottom:0}.ri:first-child{padding-top:0}
+.ri:hover{padding-left:5px}
+.ri-cat{font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--olive);margin-bottom:3px}
+.ri-title{font-family:'Libre Baskerville',serif;font-size:16px;color:var(--ink);line-height:1.25;text-decoration:none;display:block}
+.ri-title:hover{color:var(--olive)}
+.ri-meta{font-size:11px;color:var(--light);margin-top:2px}
+.about-box{background:var(--olive);padding:22px}
+.ab-name{font-family:'Libre Baskerville',serif;font-size:20px;font-weight:700;color:#fff;margin-bottom:8px}
+.ab-name .s{color:var(--gold)}
+.ab-text{font-size:13px;line-height:1.7;color:rgba(255,255,255,0.4);font-weight:300}
+.not-found{text-align:center;padding:80px;color:var(--muted);grid-column:1/-1}
+footer{background:var(--olive);margin-top:52px;text-align:center;padding:24px;font-size:12px;color:rgba(255,255,255,0.3)}
+footer a{color:rgba(255,255,255,0.3);text-decoration:none;margin:0 10px;transition:color 0.2s}
+footer a:hover{color:#fff}
+.fl{font-family:'Libre Baskerville',serif;font-size:22px;font-weight:700;color:#fff;margin-bottom:5px}
+.fl span{color:var(--gold)}
+</style>
+</head>
+<body>
+<header><div class="hdr-inner"><a href="index.html" class="logo"><div class="logo-name">Tage<span class="s">Spiegel</span></div></a></div></header>
+<nav><div class="nav-inner"><a href="index.html">← Start</a><a href="index.html">Politik</a><a href="index.html">Wirtschaft</a><a href="index.html">Gesellschaft</a><a href="index.html">Kultur</a><a href="index.html">Technik</a></div></nav>
+<div id="post-hero" class="post-hero" style="display:none">
+  <div class="ph-inner">
+    <div>
+      <div class="ph-breadcrumb"><a href="index.html">Start</a><span>/</span><span id="ph-cat-bc">Allgemein</span></div>
+      <div class="ph-tag" id="ph-tag">Allgemein</div>
+      <div class="ph-title" id="ph-title"></div>
+      <div class="ph-meta"><div class="ph-av" id="ph-av">R</div><strong id="ph-author">Redaktion</strong><span>· <span id="ph-date"></span></span><span>· <span id="ph-read">5 Min.</span></span></div>
+    </div>
+    <div class="ph-visual"><div class="ph-vis-letter" id="ph-letter">A</div></div>
+  </div>
+</div>
+<div class="layout">
+  <div class="main-col">
+    <a href="index.html" class="back-btn">← Alle Artikel</a>
+    <div id="article-body" class="article-body"></div>
+    <div id="not-found" class="not-found" style="display:none"><h2 style="font-family:'Libre Baskerville',serif;font-size:34px;color:var(--ink)">Artikel nicht gefunden.</h2></div>
+  </div>
+  <aside class="sidebar">
+    <div class="about-box"><div class="ab-name">Tage<span class="s">Spiegel</span></div><div class="ab-text">Das deutsche Blog für alle Themen — täglich neu.</div></div>
+    <div class="widget"><div class="wh"><span class="wh-leaf">🌿</span><div class="wh-title">Weitere Artikel</div></div><div class="wb"><div id="recent-posts"></div></div></div>
+  </aside>
+</div>
+<footer><div class="fl">Tage<span>Spiegel</span></div><p>&copy; 2026 TageSpiegel &nbsp;|&nbsp;<a href="#">Impressum</a>&nbsp;|&nbsp;<a href="#">Datenschutz</a></p></footer>
+<script>
+// Constants
+const GIST_ID = '42ea11087f40fdba423f8eb0f575ac96';
+const SITE_NAME = 'tagespiegel';
+const RAW_URL = `https://gist.githubusercontent.com/Hamzamain-spec/${GIST_ID}/raw/posts.json`;
+
+const params = new URLSearchParams(window.location.search);
+const id = params.get('id');
+
+async function loadPost() {
+  try {
+    const response = await fetch(RAW_URL);
+    const allPosts = await response.json();
+    
+    // Filter posts by site name
+    const sitePosts = Array.isArray(allPosts) 
+      ? allPosts.filter(p => p.site === SITE_NAME)
+      : [];
+    
+    const post = sitePosts.find(p => p.id == id);
+    
+    if (post) {
+      document.title = post.title + ' — TageSpiegel';
+      document.getElementById('ph-title').textContent = post.title;
+      document.getElementById('ph-tag').textContent = post.category || 'Allgemein';
+      document.getElementById('ph-cat-bc').textContent = post.category || 'Allgemein';
+      document.getElementById('ph-author').textContent = post.author || 'Redaktion';
+      document.getElementById('ph-av').textContent = (post.author || 'R').charAt(0).toUpperCase();
+      document.getElementById('ph-date').textContent = new Date(post.date).toLocaleDateString('de-DE', {day:'numeric', month:'long', year:'numeric'});
+      
+      const w = post.content.replace(/<[^>]+>/g, '').split(' ').length;
+      document.getElementById('ph-read').textContent = Math.max(1, Math.round(w / 200)) + ' Min. Lesezeit';
+      document.getElementById('ph-letter').textContent = post.title.charAt(0).toUpperCase();
+      document.getElementById('article-body').innerHTML = post.content;
+      document.getElementById('post-hero').style.display = 'block';
+      
+      // Recent posts (excluding current)
+      const rp = document.getElementById('recent-posts');
+      rp.innerHTML = '';
+      sitePosts.slice().reverse().slice(0, 6).forEach(p => {
+        if (p.id == id) return;
+        rp.innerHTML += `<div class="ri">
+          <div class="ri-cat">${p.category || 'Allgemein'}</div>
+          <a class="ri-title" href="post.html?id=${p.id}">${p.title}</a>
+          <div class="ri-meta">${p.author || 'Redaktion'} · ${new Date(p.date).toLocaleDateString('de-DE')}</div>
+        </div>`;
+      });
+    } else {
+      document.getElementById('not-found').style.display = 'block';
+    }
+  } catch (e) {
+    console.error('Error loading post:', e);
+    document.getElementById('not-found').style.display = 'block';
+  }
+}
+
+// Load the post
+loadPost();
+</script>
+</body>
+</html>
